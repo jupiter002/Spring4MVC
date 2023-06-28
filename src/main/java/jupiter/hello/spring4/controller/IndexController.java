@@ -19,6 +19,7 @@ public class IndexController {
         m.addAttribute("sayHello","Hello World! from Controller");
         //로거 출력
         logger.info("Hello,world !! from logger");
-        return "index";
+        //return "index"; //jsp view resolver
+        return "index.tiles";
     }
 }
