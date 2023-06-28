@@ -4,8 +4,11 @@
 <html>
 <head>
     <title>세미 프로젝트</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="/assets/css/project.css" rel="stylesheet">
 </head>
 <body>
+<div id="container">
 <header><h1>SemiProject</h1></header>
 <nav>
     <ul>
@@ -15,15 +18,18 @@
         <li><a href="/board/list">게시판</a></li>
         <li><a href="/member/myinfo">회원정보</a></li>
     </ul>
+    <hr class="hr">
 </nav>
 
 <main></main>
 
 <foorter>
-    <hr>
-    <div>copyright 100 &copy; 2023. jupiter. ALL Rights Reserved. x </div>
+    <hr class="hr">
+    <div class="copy">copyright 100 &copy; 2023. jupiter. ALL Rights Reserved.  </div>
 
 
 </foorter>
+</div>
+
 </body>
 </html>
