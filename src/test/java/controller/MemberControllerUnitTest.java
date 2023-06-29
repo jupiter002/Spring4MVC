@@ -2,10 +2,12 @@ package controller;
 
 import jupiter.hello.spring4.controller.IndexController;
 import jupiter.hello.spring4.controller.MemberController;
+import jupiter.hello.spring4.model.Member;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -57,6 +59,20 @@ public class MemberControllerUnitTest {
                         .param("passwd", "987xyz"))
                         .andExpect(redirectedUrl("/member/myinfo"));
     }
+    @Test
+    public void myinfoTest() throws Exception {
+        // 모조 세션객체를 하나 만들어서 아이디를 저장해 둠
+        MockHttpSession sess = new MockHttpSession();
+        Member m = new Member();
+        m.setUserid("abc123");
+        sess.setAttribute("member",m);
 
+
+        MvcResult mvcResult = mockMvc.perform(get("/member/myinfo").session(sess))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        System.out.println(mvcResult.getModelAndView());
+    }
 
 }
