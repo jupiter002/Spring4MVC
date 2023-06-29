@@ -6,5 +6,6 @@ public interface MemberService {
 
     boolean saveMemeber(Member m);
     boolean loginMember(Member m);
+    Member readOneMember(String userid);
 
 }
