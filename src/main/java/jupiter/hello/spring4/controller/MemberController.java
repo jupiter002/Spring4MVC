@@ -58,12 +58,21 @@ public class MemberController {
     @RequestMapping("/member/myinfo")
     public String myinfo(Model m, HttpSession sess) {
         logger.info("member/myinfo 호출");
+        //세션 객체가 없을경우 로그인 페이지로 이동
+        if(sess.getAttribute("member")==null)
+        return "redirect:/member/login";
         String userid = ((Member)sess.getAttribute("member")).getUserid();
         m.addAttribute("member",msrv.readOneMember(userid));
 
         return "member/myinfo.tiles";
     }
 
+    @RequestMapping("/member/logout")
+    public String logout(Model m, HttpSession sess) {
+        logger.info("member/logout 호출");
+        sess.invalidate();  // 세션 객체 제거
+        return "redirect:/";
+    }
     @RequestMapping(value = "/member/grade", method = RequestMethod.GET)
     public String grade(Model m) {
         logger.info("member/grade 호출");
