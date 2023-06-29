@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class MemberController {
@@ -42,19 +44,22 @@ public class MemberController {
         return "member/login.tiles";
     }
     @PostMapping("/member/login")
-    public String loginok(Member m) {
+    public String loginok(Member m, HttpSession sess) {
         String viewName = "redirect:/member/loginfail";
 
         logger.info("member/loginok 호출");
-        if(msrv.loginMember(m))
+        if(msrv.loginMember(m)) {
+            sess.setAttribute("member",m);  //세션변수
             viewName = "redirect:/member/myinfo";
-
+        }
         return viewName;
     }
 
     @RequestMapping("/member/myinfo")
-    public String myinfo(Model m) {
+    public String myinfo(Model m, HttpSession sess) {
         logger.info("member/myinfo 호출");
+        String userid = ((Member)sess.getAttribute("member")).getUserid();
+        m.addAttribute("member",msrv.readOneMember(userid));
 
         return "member/myinfo.tiles";
     }
