@@ -1,5 +1,9 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:if test="${not empty sessionScope.member}">
+    <script>location.href = "/member/myinfo";</script>
+</c:if>
 
 <main>
     <h2>회원가입</h2>
@@ -10,10 +14,10 @@
             <input type="password" name="passwd" id="passwd"></div>
         <div><label for="repwd">비밀번호 확인</label>
             <input type="password" name="repwd" id="repwd"></div>
-        <div><label for="username">이름</label>
-            <input type="text" name="username" id="username"></div>
-        <div><label for="useremail">이메일</label>
-            <input type="email" name="useremail" id="useremail"></div>
+        <div><label for="name">이름</label>
+            <input type="text" name="name" id="name"></div>
+        <div><label for="email">이메일</label>
+            <input type="email" name="email" id="email"></div>
 
         <div><label></label>
             <button type="button" class="btn btn-primary" id="joinbtn">입력완료</button>
