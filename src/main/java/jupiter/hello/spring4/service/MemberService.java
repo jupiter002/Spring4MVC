@@ -5,5 +5,6 @@ import jupiter.hello.spring4.model.Member;
 public interface MemberService {
 
     boolean saveMemeber(Member m);
+    boolean loginMember(Member m);
 
 }
