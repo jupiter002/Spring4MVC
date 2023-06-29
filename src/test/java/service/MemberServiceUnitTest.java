@@ -29,7 +29,14 @@ public class MemberServiceUnitTest {
         Member m = new Member(null, "abc123a","987xyz","abc123","abc123@987xyz.co.kr",null);
         assertEquals(msrv.saveMemeber(m),true);
     }
-
+    @Test
+    public void loginMember() throws Exception{
+        // assertEquals(테스트메서드, 검증값)
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+        assertEquals(msrv.loginMember(m),true);
+    }
 
 
 }
