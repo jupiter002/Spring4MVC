@@ -38,7 +38,13 @@ public class MemberDAOUnitTest {
         //System.out.println(mdao.loginMember(m));
         assertNotNull(mdao.loginMember(m));     // 넘어오는 값이 null인지 확인하는 메서드
     }
-
+    @Test           // selectOneMember 메서드 모의 실행
+    public void selectOneMember() throws Exception{
+        Member m = new Member();
+        String userid = "abc123";
+        System.out.println(mdao.selectOneMember(userid));
+        assertNotNull(mdao.selectOneMember(userid));     // 넘어오는 값이 null인지 확인하는 메서드
+    }
 
 
 }
