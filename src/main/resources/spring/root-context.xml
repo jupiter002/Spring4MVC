@@ -32,4 +32,11 @@
 		  p:dataSource="dataSource"
 		  p:dataSource-ref="dbcpDataSource" />
 
+	<!-- transaction mamager -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		  p:dataSource="dataSource"
+		  p:dataSource-ref="dbcpDataSource" />
+
+
 </beans>
