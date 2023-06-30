@@ -1,17 +1,15 @@
 package jupiter.hello.spring4.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Board {
-    private int bno;
+    private String bno;
     private String userid;
     private String title;
     private String contents;
