@@ -3,7 +3,6 @@
 
     <foorter>
         <hr class="hr">
-        <div class="copy">copyright 100 &copy; 2023. jupiter. ALL Rights Reserved.  </div>
-
+        <div class="copy">copyright 100 &copy; 2023. jupiter. ALL Rights Reserved.</div>
 
     </foorter>

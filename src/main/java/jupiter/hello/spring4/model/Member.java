@@ -9,11 +9,11 @@ import lombok.*;
 @ToString
 
 public class Member {
-    private int mno;
+    private String mno;
     private String userid;
     private String passwd;
-    private String username;
-    private String useremail;
+    private String name;
+    private String email;
     private String regdate;
 
 
