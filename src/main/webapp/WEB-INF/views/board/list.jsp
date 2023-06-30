@@ -2,14 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <main>
+
+
     <h2>게시판</h2>
     <table class="board">
         <colgroup>
             <col style="width: 10%">
             <col style="">
             <col style="width: 15%">
+            <col style="width: 15%">
             <col style="width: 10%">
-            <col style="">
         </colgroup>
         <tbody>
             <tr>
@@ -37,170 +39,32 @@
                 <th>작성일</th>
                 <th>조회</th>
             </tr>
+            <%-- for(Board bd : boards) --%>
+            <c:forEach items="${boards}" var="bd">
             <tr>
-                <td>1</td>
-                <td><a href="/board/view?bno=">ㅁㄴㅇㅁㄴㅇ</a></td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
+                <td>${bd.bno}</td>
+                <td><a href="/board/view?bno=${bd.bno}">${bd.title}</a></td>
+                <td>${bd.userid}</td>
+                <td>${bd.regdate}</td>
+                <td>${bd.views}</td>
             </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>ㅁㄴㅇㅁㄴㅇ</td>
-                <td>abc123</td>
-                <td>2023-07-21</td>
-                <td>987</td>
-            </tr>
-
-
+            </c:forEach>
 
         </tbody>
     </table>
     <ul class="pagenation">
-        <li>이전</li>
-        <li><a href="?cpg" class="cpage">1</a></li>
-        <li><a href="?cpg">2</a></li>
-        <li><a href="?cpg">3</a></li>
-        <li><a href="?cpg">4</a></li>
-        <li><a href="?cpg">5</a></li>
-        <li><a href="?cpg">6</a></li>
-        <li><a href="?cpg">7</a></li>
-        <li><a href="?cpg">8</a></li>
-        <li><a href="?cpg">9</a></li>
-        <li><a href="?cpg">10</a></li>
-        <li>다음</li>
+        <c:if test="${param.cpg gt 1}">
+            <li><a href="?cpg=${param.cpg - 1}">이전</a></li>
+        </c:if>
+        <%-- for(int i=0; i<10; i++) --%>
+        <c:forEach var="i" begin="1" end="10">
+            <c:if test="${param.cpg ne i}">
+            <li><a href="?cpg=${i}">${i}</a></li></c:if>
+            <c:if test="${param.cpg eq i}">
+            <li class="cpage">
+                <a href="?cpg=${i}" class="cpage">${i}</a></li></c:if>
+        </c:forEach>
+        <li><a href="?cpg=${param.cpg + 1}">다음</a></li>
     </ul>
 
 </main>
