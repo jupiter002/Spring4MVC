@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <main>
 
@@ -45,7 +46,7 @@
                 <td>${bd.bno}</td>
                 <td><a href="/board/view?bno=${bd.bno}">${bd.title}</a></td>
                 <td>${bd.userid}</td>
-                <td>${bd.regdate}</td>
+                <td>${fn:substring(bd.regdate, 0, 10)}</td>     <!-- substring: (자를 문자열 객체,자르기 시작할 인덱스, 어디까지 자를지 정할 인덱스) -->
                 <td>${bd.views}</td>
             </tr>
             </c:forEach>
@@ -53,11 +54,11 @@
         </tbody>
     </table>
     <ul class="pagenation">
-        <c:if test="${param.cpg gt 1}">
+        <c:if test="${param.cpg ge 1}">
             <li><a href="?cpg=${param.cpg - 1}">이전</a></li>
         </c:if>
         <%-- for(int i=0; i<10; i++) --%>
-        <c:forEach var="i" begin="1" end="10">
+        <c:forEach var="i" begin="${psnum}" end="${psnum + 9}">
             <c:if test="${param.cpg ne i}">
             <li><a href="?cpg=${i}">${i}</a></li></c:if>
             <c:if test="${param.cpg eq i}">
