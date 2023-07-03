@@ -1,5 +1,6 @@
 package jupiter.hello.spring4.controller;
 
+import jupiter.hello.spring4.model.Board;
 import jupiter.hello.spring4.service.BoardService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,21 +23,26 @@ public class BoardController {
         logger.info("board/list호출");
 
         m.addAttribute("boards",bsrv.readBoard(cpg));
+        //m.addAttribute("psnum",);       // 페이지네이션 시작 번호
+        //m.addAttribute("allpg",);       // 총페이지
 
         return "board/list.tiles";
     }
     @GetMapping("/write")
     public String write(Model m){
 
-        logger.info("board/list호출");
+        logger.info("board/write호출");
 
         return "board/write.tiles";
     }
     @GetMapping("/view")
-    public String view(Model m){
+    public String view(Model m,String bno){
 
-        logger.info("board/list호출");
+        logger.info("board/view호출");
+        Board board = bsrv.readOneBoard(bno);
+        m.addAttribute("Oneview",board);
 
         return "board/view.tiles";
     }
+
 }
