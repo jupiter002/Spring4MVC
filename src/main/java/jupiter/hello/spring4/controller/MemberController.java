@@ -22,7 +22,8 @@ public class MemberController {
     MemberService msrv;
 
     @RequestMapping(value = "/member/join", method = RequestMethod.GET)
-    public String join(Model m) {
+    public String join(Model m, HttpSession sess) {
+
         logger.info("member/join 호출");
 
         return "member/join.tiles";
