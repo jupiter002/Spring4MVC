@@ -53,6 +53,17 @@ public class BoardControllerUnitTest {
                 .andReturn();
         System.out.println(mvcResult.getModelAndView());
     }
+    @Test
+    @Transactional
+    public void writeokTest() throws  Exception{
+                mockMvc.perform(post("/board/write")
+                .param("title","abc123")
+                .param("userid","테스트")
+                .param("contents","테스트"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/board/list"));
+                //.andExpect(view().name("redirect:/board/list"));
 
+    }
 
 }
