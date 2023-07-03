@@ -15,6 +15,8 @@ import java.util.List;
 public class BoardDaoImpl implements BoardDao{
     @Value("#{sql['selectBoard']}") private String selectSQL;
     @Value("#{sql['selectOneBoard']}") private String selectOneSQL;
+    @Value("#{sql['viewCountBoard']}") private String viewCountSQL;
+    @Value("#{sql['insertBoard']}") private String insertSQL;
 
     @Autowired JdbcTemplate jdbcTemplate;
     @Override
@@ -25,8 +27,6 @@ public class BoardDaoImpl implements BoardDao{
 
         return jdbcTemplate.query(selectSQL,params,mapper);
     }
-
-
 
     private class SelectMapper implements RowMapper<Board> {
         @Override
@@ -42,8 +42,14 @@ public class BoardDaoImpl implements BoardDao{
     public Board selectOneBoard(String bno) {
         Object[] params = new Object[]{bno};
         RowMapper<Board> SelectOneMapper = new SelectOneMapper();
+
+        //조회수 증가
+        jdbcTemplate.update(viewCountSQL,params);
         return jdbcTemplate.queryForObject(selectOneSQL,params,SelectOneMapper);
     }
+
+
+
     private class SelectOneMapper implements RowMapper<Board> {
         @Override
         public Board mapRow(ResultSet rs, int num) throws SQLException {
@@ -53,4 +59,13 @@ public class BoardDaoImpl implements BoardDao{
             return bd;
         }
     }   //selectOneMappper
+
+    @Override
+    public int insertBoard(Board bd) {
+        Object[] params = new Object[]{
+                bd.getTitle(), bd.getUserid()
+                ,bd.getContents()
+        };
+        return jdbcTemplate.update(insertSQL, params);
+    }
 }       // class
