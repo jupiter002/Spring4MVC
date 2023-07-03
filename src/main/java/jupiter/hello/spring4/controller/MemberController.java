@@ -32,10 +32,11 @@ public class MemberController {
     @RequestMapping(value = "/member/join", method = RequestMethod.POST)
     public String joinok(Member m) {
         logger.info("member/joinok 호출");
-        String viewName = "redirect:/member/fail";
+        String viewName = "redirect:/member/fail";          // jsp파일로 이동하지 않고 링크주소를 바꾸려면 reirect:/를 사용
 
         if(msrv.saveMemeber(m))
             viewName = "redirect:/member/login";
+
         return viewName;
     }
 
@@ -61,11 +62,13 @@ public class MemberController {
     @RequestMapping("/member/myinfo")
     public String myinfo(Model m, HttpSession sess) {
         logger.info("member/myinfo 호출");
-        //세션 객체가 없을경우 로그인 페이지로 이동
-        if(sess.getAttribute("member")==null)
-        return "redirect:/member/login";
+
+        //세션 객체가 없을경우 로그인 페이지로 이동 - aop로 처리
+        /*if(sess.getAttribute("member")==null)
+        return "redirect:/member/login";*/
+
         String userid = ((Member)sess.getAttribute("member")).getUserid();      // 세션 객체가 있을때 addAttribute로 member변수에
-        m.addAttribute("member",msrv.readOneMember(userid));                    // readOneMember메서드로 받은 값을 넣고 myinfo로 이동할 수 있도록 반환
+        m.addAttribute("member",msrv.readOneMember(userid));                 // readOneMember메서드로 받은 값을 넣고 myinfo로 이동할 수 있도록 반환
 
         return "member/myinfo.tiles";
     }
@@ -82,5 +85,15 @@ public class MemberController {
 
         return "member/loginfail.tiles";
     }
+    @RequestMapping("/member/grade")
+    public String gradesearch(Model m, HttpSession sess){
+        logger.info("member/grade 호출");
+
+        return "member/grade.tiles";
+    }
+    /*@RequestMapping("/member/grade")
+    public String gradesearchok(){
+        return null;
+    }*/
 
 }
