@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,7 +32,7 @@ public class BoardController {
         return "board/list.tiles";
     }
     @GetMapping("/write")
-    public String write(Model m){
+    public String write(Model m, HttpSession sess){
 
         logger.info("board/write호출");
 
